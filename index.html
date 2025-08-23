@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Justin Joseph – Portfolio</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S5SSV7GGBG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S5SSV7GGBG');
+  </script>
+
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; line-height:1.6; color:#222; background:#f9f9f9; padding:20px; overflow-x:hidden; }
@@ -18,7 +28,7 @@
     }
 
     header img {
-      width:94px;  /* default slightly bigger */
+      width:94px;
       height:94px;
       border-radius:50%;
       object-fit:cover;
@@ -69,7 +79,6 @@
       nav a { display:block; margin:10px 0; }
     }
 
-    /* Modal for profile pic */
     .modal {
       display:none;
       position:fixed;
@@ -81,9 +90,9 @@
       align-items:center;
     }
     .modal img {
-      width:340px;  /* 9 cm */
+      width:340px;
       height:340px;
-      border-radius:50%; 
+      border-radius:50%;
       object-fit:cover;
       box-shadow:0 6px 20px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
@@ -136,8 +145,6 @@
     <p>📞Phone: <a href="tel:+91XXXXXXXXXX" class="contact-link">+91 XXXXX XXXXX</a></p>
   </section>
 
- 
-
   <!-- Modal -->
   <div class="modal" id="modal">
     <img src="profile.jpg" alt="Profile Popup">
@@ -158,5 +165,3 @@
 
 </body>
 </html>
-
-
