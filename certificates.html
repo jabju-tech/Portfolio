@@ -79,23 +79,23 @@
 <section class="section">
   <h2>Certificates</h2>
   <div class="cert-grid">
-    <div class="cert-card" onclick="openLightbox('certificate1.jpg')">
+    <div class="cert-card" onclick="openLightbox('certificate1.jpg', 'Cyber Security')">
       <img src="certificate1.jpg" alt="Cyber Security">
       <p>Cyber Security</p>
     </div>
-    <div class="cert-card" onclick="openLightbox('certificate2.jpg')">
+    <div class="cert-card" onclick="openLightbox('certificate2.jpg', 'Network Security')">
       <img src="certificate2.jpg" alt="Network Security">
       <p>Network Security</p>
     </div>
-    <div class="cert-card" onclick="openLightbox('certificate3.jpg')">
+    <div class="cert-card" onclick="openLightbox('certificate3.jpg', 'Machine Learning with Python')">
       <img src="certificate3.jpg" alt="Machine Learning with Python">
       <p>Machine Learning with Python</p>
     </div>
-    <div class="cert-card" onclick="openLightbox('certificate4.jpg')">
+    <div class="cert-card" onclick="openLightbox('certificate4.jpg', 'Security Management Course')">
       <img src="certificate4.jpg" alt="Security Management Course">
       <p>Security Management Course</p>
     </div>
-    <div class="cert-card" onclick="openLightbox('certificate5.jpg')">
+    <div class="cert-card" onclick="openLightbox('certificate5.jpg', 'Ethical Hacking')">
       <img src="certificate5.jpg" alt="Ethical Hacking">
       <p>Ethical Hacking</p>
     </div>
@@ -115,15 +115,23 @@
 
 <script>
   let currentImg = "";
+  let currentLabel = "";
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const downloadLink = document.getElementById('downloadLink');
 
-  function openLightbox(src) {
+  function openLightbox(src, label) {
     currentImg = src;
+    currentLabel = label;
     lightbox.style.display = "flex";
     lightboxImg.src = src;
     downloadLink.href = src;
+
+    // GA4 event: certificate viewed
+    gtag('event', 'certificate_viewed', {
+      'event_category': 'engagement',
+      'event_label': currentLabel
+    });
   }
 
   function closeLightbox() {
@@ -134,6 +142,14 @@
     window.open(currentImg, "_blank");
   }
 
+  // GA4 event: certificate downloaded
+  downloadLink.addEventListener('click', () => {
+    gtag('event', 'certificate_download', {
+      'event_category': 'downloads',
+      'event_label': currentLabel
+    });
+  });
+
   lightbox.addEventListener('click', (e) => {
     if(e.target === lightbox) closeLightbox();
   });
@@ -141,6 +157,7 @@
 
 </body>
 </html>
+
 
 
 
