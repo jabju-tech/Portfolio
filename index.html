@@ -6,12 +6,12 @@
   <title>Justin Joseph – Portfolio</title>
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S5SSV7GGBG"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NH0J997NFY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-S5SSV7GGBG');
+    gtag('config', 'G-NH0J997NFY');
   </script>
 
   <style>
@@ -137,10 +137,7 @@
   <section id="certificates" class="section">
     <h2>Certificates</h2>
     <p>Here are some of my achievements and certifications.</p>
-    <a class="certificate-btn" href="certificates.html" target="_blank" onclick="gtag('event', 'certificate_page_click', {
-      'event_category': 'engagement',
-      'event_label': 'View Certificates Button'
-    });">View Certificates</a>
+    <a class="certificate-btn" href="certificates.html" target="_blank">View Certificates</a>
   </section>
 
   <section id="contact" class="section">
@@ -156,6 +153,13 @@
   </div>
 
   <script>
+    // GA4 Event Tracking function
+    function trackEvent(eventName, eventParams) {
+      if (typeof gtag === "function") {
+        gtag('event', eventName, eventParams);
+      }
+    }
+
     const profilePic = document.getElementById('profilePic');
     const modal = document.getElementById('modal');
     const modalImage = document.getElementById('modalImage');
@@ -164,15 +168,24 @@
       modal.style.display = "flex";
       modalImage.src = profilePic.src;
 
-      // Google Analytics event tracking for DP click
-      gtag('event', 'profile_click', {
-        'event_category': 'engagement',
-        'event_label': 'Profile Image'
+      // Track profile picture click
+      trackEvent('profile_click', {
+        event_category: 'engagement',
+        event_label: 'Profile Image'
       });
     });
 
     modal.addEventListener('click', () => {
       modal.style.display = "none";
+    });
+
+    // Track certificate button click
+    const certBtn = document.querySelector('.certificate-btn');
+    certBtn.addEventListener('click', () => {
+      trackEvent('certificate_page_click', {
+        event_category: 'engagement',
+        event_label: 'View Certificates Button'
+      });
     });
   </script>
 
